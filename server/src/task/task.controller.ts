@@ -6,18 +6,22 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { UserId } from 'src/decorator/userId.decorator';
+import { IsAuthGuard } from 'src/guard/isAuth.guard';
 
 @Controller('task')
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
   @Post()
-  create(@Body() createTaskDto: CreateTaskDto) {
-    return this.taskService.create(createTaskDto);
+  @UseGuards(IsAuthGuard)
+  create(@Body() createTaskDto: CreateTaskDto, @UserId() userId: string) {
+    return this.taskService.create(createTaskDto, userId);
   }
 
   @Get()

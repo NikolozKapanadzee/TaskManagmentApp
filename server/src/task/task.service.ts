@@ -16,8 +16,14 @@ export class TaskService {
     @InjectModel(Task.name) private taskModel: Model<Task>,
     @InjectModel(User.name) private userModel: Model<User>,
   ) {}
-  async create(createTaskDto: CreateTaskDto) {
-    const newTask = await this.taskModel.create(createTaskDto);
+  async create(createTaskDto: CreateTaskDto, userId: string) {
+    const newTask = await this.taskModel.create({
+      ...createTaskDto,
+      author: userId,
+    });
+    await this.userModel.findByIdAndUpdate(userId, {
+      $push: { tasks: newTask._id },
+    });
     return {
       message: 'Task Created Successfully',
       data: newTask,
@@ -65,6 +71,13 @@ export class TaskService {
       throw new BadRequestException('Invalid ID format');
     }
     const deletedTask = await this.taskModel.findByIdAndDelete(id);
+    await this.userModel.findByIdAndUpdate(
+      deletedTask?.author,
+      {
+        $pull: { tasks: deletedTask?._id },
+      },
+      { new: true },
+    );
     if (!deletedTask) {
       throw new NotFoundException('Task Has Not Been Found');
     }
