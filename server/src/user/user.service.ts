@@ -12,20 +12,6 @@ import { isValidObjectId, Model } from 'mongoose';
 @Injectable()
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
-  async create(createUserDto: CreateUserDto) {
-    const existUser = await this.userModel.findOne({
-      email: createUserDto.email,
-    });
-    if (existUser) {
-      throw new BadRequestException('User Already Exist');
-    }
-    const newUser = await this.userModel.create(createUserDto);
-    return {
-      message: 'user created successfully',
-      data: newUser,
-    };
-  }
-
   findAll() {
     return this.userModel.find();
   }
