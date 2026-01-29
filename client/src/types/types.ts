@@ -3,3 +3,7 @@ export interface InputProps {
   className?: string;
   placeholder?: string;
 }
+export interface IconProps {
+  size?: number;
+  className?: string;
+}
