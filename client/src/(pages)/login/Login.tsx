@@ -1,9 +1,12 @@
-import React from "react";
+import Input from "../../components/input/Input";
 
 export default function Login() {
   return (
     <div>
-      <h1>Login Page</h1>
+      <Input
+        className="w-100 h-10 bg-amber-200"
+        placeholder="Enter Your Email"
+      />
     </div>
   );
 }
