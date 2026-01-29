@@ -1,12 +1,9 @@
-import Input from "../../components/input/Input";
+import LoginForm from "../../components/login/LoginForm";
 
 export default function Login() {
   return (
-    <div>
-      <Input
-        className="w-100 h-10 bg-amber-200"
-        placeholder="Enter Your Email"
-      />
+    <div className="min-h-screen flex items-center justify-center">
+      <LoginForm />
     </div>
   );
 }

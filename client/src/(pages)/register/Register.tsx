@@ -1,7 +1,12 @@
-export default function Register() {
+import RegisterForm from "../../components/register/RegisterForm";
+
+function Register() {
   return (
-    <div>
-      <h1>Register Page</h1>
-    </div>
+    <>
+      <div className="min-h-screen flex items-center justify-center">
+        <RegisterForm />
+      </div>
+    </>
   );
 }
+export default Register;
