@@ -1,10 +1,26 @@
 import { Link } from "react-router";
 import Button from "../button/Button";
 import Input from "../input/Input";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LoginValidationSchema } from "../../validations/LoginValidationSchema";
 
 const LoginForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(LoginValidationSchema) });
+
+  const handleOnSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
-    <form className="w-full max-w-md border border-gray-300 rounded-lg bg-white p-6">
+    <form
+      onSubmit={handleSubmit(handleOnSubmit)}
+      className="w-full max-w-md border border-gray-300 rounded-lg bg-white p-6"
+    >
       <div className="text-center">
         <h1 className="text-2xl font-bold text-black mb-2">Welcome back</h1>
         <p className="text-sm text-[hsl(215,16%,47%)]">
@@ -17,6 +33,8 @@ const LoginForm = () => {
           placeholder="you@example.com"
           type="email"
           className="w-full px-2 py-1.5 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          error={errors.email?.message as string}
+          {...register("email")}
         />
 
         <Input
@@ -24,6 +42,8 @@ const LoginForm = () => {
           placeholder="········"
           type="password"
           className="w-full px-2 py-1.5 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          error={errors.password?.message as string}
+          {...register("password")}
         />
       </div>
       <Button
