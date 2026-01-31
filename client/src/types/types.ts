@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export interface InputProps {
   type?: string;
   className?: string;
@@ -10,9 +12,9 @@ export interface IconProps {
   className?: string;
 }
 export interface ButtonProps {
-  text: string;
   className?: string;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   disabled?: boolean;
+  children: ReactNode;
 }

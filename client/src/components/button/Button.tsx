@@ -1,11 +1,11 @@
 import type { ButtonProps } from "../../types/types";
 
 export default function Button({
-  text,
   className = "",
   type = "button",
   onClick,
   disabled = false,
+  children,
 }: ButtonProps) {
   return (
     <button
@@ -13,7 +13,7 @@ export default function Button({
       type={type}
       className={className}
     >
-      {text}
+      {children}
     </button>
   );
 }

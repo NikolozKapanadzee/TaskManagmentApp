@@ -48,10 +48,11 @@ const RegisterForm = () => {
         />
       </div>
       <Button
-        text="Create account"
         type="submit"
         className="w-full py-2 font-semibold text-sm bg-[hsl(222,47%,11%)] cursor-pointer rounded-lg text-white hover:bg-[hsl(222,47%,15%)] transition-colors mb-6"
-      />
+      >
+        Create account
+      </Button>
       <p className="text-center text-base text-[hsl(215,16%,47%)]">
         Already have an account?{" "}
         <Link to="/login">

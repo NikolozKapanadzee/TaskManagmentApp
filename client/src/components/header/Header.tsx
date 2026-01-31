@@ -3,7 +3,7 @@ import FileCheckIcon from "../../assets/icons/FileCheckIcon";
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between p-4">
+    <header className="flex items-center justify-between pt-4 mx-12">
       <div className="flex items-center gap-2">
         <FileCheckIcon />
         <span className="font-semibold text-[20px]">TaskFlow</span>
