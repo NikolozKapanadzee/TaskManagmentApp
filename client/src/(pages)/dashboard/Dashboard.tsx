@@ -1,9 +1,10 @@
 import { Plus } from "lucide-react";
 import Button from "../../components/button/Button";
+import TaskCardForm from "../../components/card/TaskCardForm";
 
 export default function Dashboard() {
   return (
-    <main className="mx-auto flex flex-col p-12">
+    <main className="mx-auto flex flex-col p-12 gap-4">
       <div className="flex justify-between">
         <div className="flex flex-col ">
           <h1 className="font-bold text-2xl">My Tasks</h1>
@@ -27,6 +28,12 @@ export default function Dashboard() {
           All <span>(0)</span>
         </Button>
       </div>
+      <TaskCardForm />
+      <TaskCardForm />
+      <TaskCardForm />
+      <TaskCardForm />
+      <TaskCardForm />
+      <TaskCardForm />
     </main>
   );
 }

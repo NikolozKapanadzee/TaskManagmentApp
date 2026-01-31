@@ -1,5 +1,6 @@
 import { Moon } from "lucide-react";
 import FileCheckIcon from "../../assets/icons/FileCheckIcon";
+import Button from "../button/Button";
 
 const Header = () => {
   return (
@@ -8,9 +9,9 @@ const Header = () => {
         <FileCheckIcon />
         <span className="font-semibold text-[20px]">TaskFlow</span>
       </div>
-      <button className="w-9 h-9 inline-flex items-center justify-center cursor-pointer rounded-l hover:bg-gray-100">
+      <Button className="w-9 h-9 inline-flex items-center justify-center cursor-pointer rounded-l hover:bg-gray-100">
         <Moon size={16} />
-      </button>
+      </Button>
     </header>
   );
 };
