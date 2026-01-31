@@ -18,3 +18,19 @@ export interface ButtonProps {
   disabled?: boolean;
   children?: ReactNode;
 }
+
+export type Urgency = "Low" | "Medium" | "High";
+export interface TaskFormValues {
+  title: string;
+  description?: string;
+  urgency: Urgency;
+}
+
+export interface TaskModalProps {
+  isOpen: boolean;
+  title: string;
+  submitLabel: string;
+  defaultValues?: TaskFormValues;
+  onClose: () => void;
+  onSubmit: (data: TaskFormValues) => void;
+}

@@ -1,7 +1,11 @@
 import { PenLine, Trash2 } from "lucide-react";
 import Button from "../button/Button";
+import TaskModal from "../modal/TaskModal";
+import { useState } from "react";
 
 const TaskCardForm = () => {
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+
   return (
     <div className="w-full border-[hsl(214_32%_91%)] bg-white border rounded-lg p-6">
       <div className="flex items-center justify-between pb-5">
@@ -11,7 +15,10 @@ const TaskCardForm = () => {
           <div>Low</div>
         </div>
         <div className="flex items-center gap-4">
-          <Button className="cursor-pointer">
+          <Button
+            onClick={() => setIsCreateOpen(true)}
+            className="cursor-pointer"
+          >
             <PenLine size={16} />
           </Button>
           <Button className="cursor-pointer">
@@ -24,6 +31,13 @@ const TaskCardForm = () => {
           This is your first task. Try editing or completing it.
         </p>
       </div>
+      <TaskModal
+        isOpen={isCreateOpen}
+        title="Edit Task"
+        submitLabel="Save Changes"
+        onClose={() => setIsCreateOpen(false)}
+        onSubmit={() => setIsCreateOpen(false)}
+      />
     </div>
   );
 };
